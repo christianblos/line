@@ -1,0 +1,9 @@
+# Dependencies
+/vendor/
+composer.lock
+
+# Editor
+/.idea/
+
+# App
+/build/

@@ -1,9 +1,23 @@
 {
     "name": "line/line",
+    "description": "Very lightweight PHP Micro-Framework",
+    "keywords": ["microframework", "controller"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Christian Blos",
             "email": "christian.blos@gmx.de"
         }
-    ]
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "~4.4"
+    },
+    "autoload": {
+        "psr-4": { "Line\\": "src/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
 }
