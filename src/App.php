@@ -82,11 +82,8 @@ class App
             $route = $this->router->parseUrl($url);
             $response = $this->executeRoute($route);
 
-            if ($response instanceof Response) {
-                $response->flush();
-            } elseif (is_scalar($response)) {
-                echo $response;
-            }
+            $this->flushResponse($response);
+
         } catch(\Exception $ex) {
             $this->handleException($ex, 500);
         }
@@ -235,6 +232,20 @@ class App
         }
 
         return $response;
+    }
+
+    /**
+     * @param mixed $response
+     *
+     * @return void
+     */
+    protected function flushResponse($response)
+    {
+        if ($response instanceof Response) {
+            $response->flush();
+        } elseif (is_scalar($response)) {
+            echo $response;
+        }
     }
 
     /**
