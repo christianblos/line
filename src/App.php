@@ -209,7 +209,7 @@ class App
                 }
             }
 
-            $response = call_user_func_array($callable, $params);
+            $response = $this->executeController($callable, $params);
         } catch(RedirectException $ex) {
             $response = new RedirectResponse($ex->getUrl(), $ex->getStatusCode());
         } catch(HttpException $ex) {
@@ -232,6 +232,17 @@ class App
         }
 
         return $response;
+    }
+
+    /**
+     * @param mixed $callable
+     * @param array $params
+     *
+     * @return mixed
+     */
+    protected function executeController($callable, array $params)
+    {
+        return call_user_func_array($callable, $params);
     }
 
     /**
